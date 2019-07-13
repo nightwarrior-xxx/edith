@@ -13,6 +13,6 @@ Edith is a virtual assistant that assist folks on IRC.
 # Features
 - Welcomes to the new comers
 - Maintain discipline in the channel if someone misbehaves
+- List the links to the upcoming Open Source Communities events
 
 *Feature addition is still in progress*
-

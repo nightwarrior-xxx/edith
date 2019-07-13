@@ -64,11 +64,5 @@ while True:
                     irc.send_message(channel, "- "+i)
                 print('------------Links send----------- ')
 
-
-
-        
     except Exception:
         print('Something is wrong. Also NSA is watching you !!')
-    
-    
-    
