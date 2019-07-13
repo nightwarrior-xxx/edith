@@ -1,4 +1,7 @@
+#! /usr/bin/env python3
+
 from edith_class import *
+from meetup_details import next_events_links, links
 
 server = "irc.freenode.net"
 port = 6667
@@ -29,7 +32,7 @@ while True:
             if name not in users:
                 welcome_msg = "Welcome {name} to the IRC channel of OSDC. You are save here from NSA".format(name=name)
                 irc.send_message(channel, welcome_msg)
-                print('Welcome message send')
+                print('-------Welcome message send-----------')
                 users.append(name)
 
             if real_msg.find("fuck") != -1 or \
@@ -41,47 +44,31 @@ while True:
                 
                 warn_msg = "This is warning {name}, next time you will kicked out.".format(name=name)
                 irc.send_message(channel, warn_msg)
-                print('warning sent !!')
+                print('----------warning sent-------------')
 
 
             elif real_msg.find("#edith") != -1 :
                 message  = "Hello {name}. You are save here from NSA. How can I help you ?".format(name=name)
                 irc.send_message(channel, message)
-                print('message send !!')
+                print('----------message send---------------')
 
             elif real_msg.find("#stopedith") != -1:
                 if name in admin_name:
                     irc.send_message(channel, "I am going for a sleep. But I will be back soon. Till then save your ass from NSA")
                     irc.stop()
 
-
-                  
-                 
-                 
-            
-
-
-            # for word in real_msg.split():
-            #     if word == "#edith":
-            #         message  = "Hello {name}. How can I help you ? ".format(name=name)
-            #         irc.send_message(channel, message)
-            #         print('message send !!')
-                
-            #     elif word == "#stopedith":
-            #         if name in admin_name:
-            #             irc.send_message(channel, "I am going for a sleep. But I will be back soon. Till then save yourself from NSA")
-            #             irc.stop()
-                
-            #     elif word in bad_words:
-            #         warn_msg = "This is warning {name}, next time you will be thrown out and I will also ask NSA to breach your privacy which they love to :|".format(name=name)
-            #         irc.send_message(channel, warn_msg)
-            #         print('warning sent !!')
-            #         break
+            elif real_msg.find('#upcomingevents') != -1:
+                l = links()
+                l.get_events_links()
+                for i in next_events_links:
+                    irc.send_message(channel, "- "+i)
+                print('------------Links send----------- ')
 
 
 
+        
     except Exception:
-        print('Something is wrong. NSA is watching you')
+        print('Something is wrong. Also NSA is watching you !!')
     
     
     

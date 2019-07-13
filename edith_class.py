@@ -20,12 +20,8 @@ class help_edith:
         
     def get_message(self):
         msg = self.irc.recv(4096).decode("UTF-8")
-        if msg.find('PING') != -1:
-            print(msg.find('PING'))                      
-            self.irc.send(bytes("PONG :pingis\n", "UTF-8"))
-            print("message has been sent !!")
         return msg
 
     def stop(self):
         self.irc.send(bytes("QUIT \n", "UTF-8"))
-        print('Edith is going down !!')
+        print('------------Edith is going down------------')
